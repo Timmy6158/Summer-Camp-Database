@@ -1,0 +1,56 @@
+{
+    "$jsonSchema": {
+        "title": "Employee",
+        "description": "An Employee at a summer camp.",
+        "bsonType": "object",
+        "required": [
+            "_id",
+            "lastName",
+            "firstName",
+            "wage",
+            "sessions"
+        ],
+        "properties": {
+            "_id": {
+                "bsonType": "objectId"
+            },
+            "lastName": {
+                "bsonType": "string"
+            },
+            "firstName": {
+                "bsonType": "string"
+            },
+            "wage": {
+                "bsonType": "decimal"
+            },
+            "sessions": {
+                "bsonType": "array",
+                "items": {
+                    "bsonType": "object",
+                    "required": [
+                        "sessionId",
+                        "sessionTitle",
+                        "campName"
+                    ],
+                    "properties": {
+                        "sessionId": {
+                            "bsonType": "objectId"
+                        },
+                        "sessionTitle": {
+                            "bsonType": "string"
+                        },
+                        "campName": {
+                            "bsonType": "string"
+                        },
+                        "unitId": {
+                            "bsonType": "objectId"
+                        },
+                        "unitName": {
+                            "bsonType": "string"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

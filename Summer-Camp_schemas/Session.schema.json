@@ -1,0 +1,149 @@
+{
+    "$jsonSchema": {
+        "title": "Session",
+        "description": "A Session at summer camp.",
+        "bsonType": "object",
+        "required": [
+            "_id",
+            "startDate",
+            "endDate",
+            "title",
+            "cost",
+            "capacity",
+            "staff",
+            "units",
+            "campers",
+            "rotations"
+        ],
+        "properties": {
+            "_id": {
+                "bsonType": "objectId"
+            },
+            "startDate": {
+                "bsonType": "date"
+            },
+            "endDate": {
+                "bsonType": "date"
+            },
+            "title": {
+                "bsonType": "string"
+            },
+            "cost": {
+                "bsonType": "double"
+            },
+            "capacity": {
+                "bsonType": "int"
+            },
+            "staff": {
+                "bsonType": "array",
+                "items": {
+                    "bsonType": "object",
+                    "required": [
+                        "_id",
+                        "employeeId",
+                        "campName",
+                        "roles"
+                    ],
+                    "properties": {
+                        "_id": {
+                            "bsonType": "objectId"
+                        },
+                        "employeeId": {
+                            "bsonType": "objectId"
+                        },
+                        "campName": {
+                            "bsonType": "string"
+                        },
+                        "roles": {
+                            "bsonType": "array",
+                            "items": {
+                                "bsonType": "string"
+                            }
+                        }
+                    }
+                }
+            },
+            "units": {
+                "bsonType": "array",
+                "items": {
+                    "bsonType": "object",
+                    "required": [
+                        "_id",
+                        "unitName",
+                        "staffId",
+                        "staffCampName",
+                        "campers"
+                    ],
+                    "properties": {
+                        "_id": {
+                            "bsonType": "objectId"
+                        },
+                        "unitName": {
+                            "bsonType": "string"
+                        },
+                        "staffId": {
+                            "bsonType": "objectId"
+                        },
+                        "staffCampName": {
+                            "bsonType": "string"
+                        },
+                        "campers": {
+                            "bsonType": "array",
+                            "items": {
+                                "bsonType": "object",
+                                "required": [
+                                    "camperId",
+                                    "camperName"
+                                ]
+                            },
+                            "properties": {
+                                "camperId": {
+                                    "bsonType": "objectId"
+                                },
+                                "camperName": {
+                                    "bsonType": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "campers": {
+                "bsonType": "array",
+                "items": {
+                    "bsonType": "object",
+                    "required": [
+                        "camperId",
+                        "camperName"
+                    ],
+                    "properties": {
+                        "camperId": {
+                            "bsonType": "objectId"
+                        },
+                        "camperName": {
+                            "bsonType": "string"
+                        }
+                    }
+                }
+            },
+            "rotations": {
+                "bsonType": "array",
+                "items": {
+                    "bsonType": "object",
+                    "required": [
+                        "rotationId",
+                        "title"
+                    ],
+                    "properties": {
+                        "rotationId": {
+                            "bsonType": "objectId"
+                        },
+                        "title": {
+                            "bsonType": "string"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

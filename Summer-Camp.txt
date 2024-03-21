@@ -1,0 +1,88 @@
+Project 3: The Mongo Mash
+You may work on and submit this project with one other person.
+
+Overview
+In this project, you will translate the Project 1 UML solution into MongoDB collections, using JSON schema documents that I will provide. You will write and submit JSON documents to represent several session, camper, employee, activity, and rotation documents. You will then write a short Python program using the PyMongo library, allowing a user to search the various objects in the database.
+
+Setting up the Collections
+Use Compass to create a new database, "project3". Create collections for sessions, employees, campers, activities, and rotations.
+
+Copy and paste the contents of the Session.schema.json file from Canvas (in the Projects module) into the Validation tab of the sessions collection in Compass. Do the same for the other schemas and collections.
+
+You will want to review the schemas for each collection before moving on, and will refer to them when doing the next task.
+
+Creating validated documents
+Begin by creating JSON documents for the following objects. The documents must match the schemas from the previous step.
+
+You can do this by hand, or I will allow and encourage you to use a Large Language Model tool like ChatGPT to generate the objects. To use an LLM in this way, you should write a prompt explaining that you are providing a MongoDB $jsonSchema, and then paste one of the schemas into the prompt. Then ask the AI to generate a JSON object that matches the schema. Give the details of the object as an English sentence; like, "The Session is titled 'Harry Potter Week', starts on 12-1-2023, ends at 12-05-2023." 
+
+Check the output of the AI, and use more prompts to guide it to correct any mistakes. For example, the above prompt would likely create a Session with a $0 cost; you can use a second prompt to change that, like "Set the cost of the session to 100". You can also use follow-up prompts to add children to the object, for example, "add a Unit to the Session named 'Green Unit', with two campers, Ada and Sofia."
+
+The AI can't do everything for you; it will leave placeholders for things like object IDs, which you will need to generate and replace by hand. It may use the wrong formatting for some values, for example, it might write ISODate("2023-12-01") for date objects, which is not what Mongo wants; you can fix this by asking it to use "$date" values for dates, "$oid" values for object IDs, etc. It won't be able to magically know the object ID of an object from a different collection. If you create an Employee named Michael and then try to add Michael as staff to a Session (a different collection), the AI won't know the object ID of Michael's employee object. Also, in this denormalized database design, sometimes there are two classes that each refer to each other: for example, a Session has a list of Campers, and each Camper has a list of Sessions. You won't be able to finish a Camper object until all its Sessions are created, and you won't be able to finish a Session object until the Campers are all created... so you'll have to be clever about going back to edit objects that you made earlier.
+
+If I ask you to create an object without specifying one of its fields, you can choose any reasonable value yourself.
+
+Once an object is complete, use Compass to insert it into the correct collection. Compass will reject the insertion if the document does not match the schema, and you will need to work with the AI to figure out why and correct the issue. 
+
+The objects you need to create and insert:
+
+These activities:
+Archery
+Swimming
+Movie
+
+These campers: Ada; Sofia; Iggy; and Rosie.
+
+These employees: Lila Greer; Marco Valdez; Teresa Thompson; and Aisha Twist
+
+A session titled "Harry Potter Week":
+
+Staff: Lila Greer as "Minerva", assigned the role "Director"; Marco Valdez as "Hermes", assigned the roles "Counselor" and "Lifeguard". Teresa Thompson as "Hera", assigned the role "Counselor"; Aisha Twist as "Athena", assigned the roles of "Counselor" and "Lifeguard".
+
+Units:
+Ravenclaw: campers Ada and Sofia. Staff member is Hera.
+Hufflepuff: campers Iggy and Rosie. Staff member is Hermes.
+
+Rotations (note that these are created in the Rotations collection, and then referenced/denormalized into the Session object):
+Monday Morning: schedule Archery with Ravenclaw, supervised by Minerva
+Monday Afternoon: schedule Swimming with Hufflepuff, supervised by Athena.
+Tuesday Morning: schedule Swimming with Ravenclaw, supervised by Athena; schedule Archery with Hufflepuff, supervised by Minerva.
+Wednesday Morning: no scheduled activities
+Wednesday Evening: schedule Movie with Hufflepuff, supervised by Hermes; schedule Archery with Ravenclaw, supervised by Hera.
+.
+
+Python application
+You must now write a Python application using PyMongo to interact with this Girl Scouts database.
+
+Your application should begin with a Main Menu of these options:
+
+Employee Lookup
+Input the name of an employee. Retrieve that employee from the database, and print a "summary" view: their ID, full name, wage; and for each session they are working, the the title of that session, the employee's staff name for the session, and the name of the unit they are supervising, if any. (Do not print the unit name if they are not assigned to a unit.)
+
+Session Schedule Summary
+Input the ID of a session and the name of an activity.
+Retrieve all scheduled activities for that specific activity at that specific session. For each scheduling of the activity, print out the title of the rotation it is scheduled during, the camp name of the staff that is supervising, and the name of the unit that is participating (if any).
+You must do this in a single query for full credit. The most straightforward approach, using only techniques that we have studied, will be to:
+Run a pipeline on rotations. Match only the rotations whose sessionId match the input.
+Unwind the schedule list, to get 1 document for each activity scheduled in the rotation.
+Match the unwound activities against the activity name that was input by the user.
+
+Unit Report
+Input the name of a unit and the name of a session. Print out a summary of that unit at the session: the name of the unit, and the number of minutes at each different activity during the session. (That is, if Unit A scheduled Archery at Monday Morning (9-11am) and Tuesday Afternoon (2-3pm), they spent 180 total minutes at Archery.)
+Run a pipeline on sessions, and match only the requested session.
+Unwind the units, to get 1 document for each unit in the session.
+Join to rotations, using the unit's _id as the local field and the rotation's schedule.unitId as the foreign field.
+Unwind the joined rotations list, to get 1 document for each rotation that the unit participated in.
+Unwind the schedule list of the rotation, to get 1 document for each scheduled activity during a rotation that the unit participated in.
+Important note: we matched the rotation ("Monday Morning") to the unit because the unit scheduled an activity in that rotation, but now we have unwound all activities scheduled during that rotation, including those scheduled for other units.
+Match the unwound scheduled activities to only those matching the given unit name. Now, 1 document shows a single activity scheduled by the unit for any rotation where the unit scheduled an activity.
+Project each document to only include the activity name, and the total duration of the scheduled activity. You will need to use the $dateDiff function to find the difference (in minutes) between the rotation's start time and end time.
+Group the documents on their activity name, and sum the total duration within that group. 
+ 
+
+Deliverables
+You must deliver to me a printout containing the following documents:
+
+Title page (name of course and section number, title of assignment, team member names, due date)
+JSON documents for the objects you were required to create.
+The entire code of the Python application you were required to write. I should be able to run your program after inserting the documents you submitted.

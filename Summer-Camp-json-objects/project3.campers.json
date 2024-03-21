@@ -1,0 +1,72 @@
+[{
+  "_id": {
+    "$oid": "656fbed2ebd447b48d6c26ef"
+  },
+  "name": "Ada",
+  "birthday": {
+    "$date": "2007-06-15T00:00:00.000Z"
+  },
+  "sessions": [
+    {
+      "sessionId": {
+        "$oid": "656fea40ebd447b48d6c2705"
+      },
+      "sessionTitle": "Harry Potter Week",
+      "unitName": "RavenClaw"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "656fbf4aebd447b48d6c26f0"
+  },
+  "name": "Sofia",
+  "birthday": {
+    "$date": "2008-09-28T00:00:00.000Z"
+  },
+  "sessions": [
+    {
+      "sessionId": {
+        "$oid": "656fea40ebd447b48d6c2705"
+      },
+      "sessionTitle": "Harry Potter Week",
+      "unitName": "RavenClaw"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "656fbf96ebd447b48d6c26f1"
+  },
+  "name": "Iggy",
+  "birthday": {
+    "$date": "2007-11-10T00:00:00.000Z"
+  },
+  "sessions": [
+    {
+      "sessionId": {
+        "$oid": "656fea40ebd447b48d6c2705"
+      },
+      "sessionTitle": "Harry Potter Week",
+      "unitName": "HufflePuff"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "656fbfd1ebd447b48d6c26f2"
+  },
+  "name": "Rosie",
+  "birthday": {
+    "$date": "2009-05-23T00:00:00.000Z"
+  },
+  "sessions": [
+    {
+      "sessionId": {
+        "$oid": "656fea40ebd447b48d6c2705"
+      },
+      "sessionTitle": "Harry Potter Week",
+      "unitName": "HufflePuff"
+    }
+  ]
+}]

@@ -1,0 +1,43 @@
+{
+    "$jsonSchema": {
+        "title": "Camper",
+        "description": "A Camper at a summer camp.",
+        "bsonType": "object",
+        "required": [
+            "_id",
+            "name",
+            "birthday",
+            "sessions"
+        ],
+        "properties": {
+            "_id": {
+                "bsonType": "objectId"
+            },
+            "name": {
+                "bsonType": "string"
+            },
+            "birthday": {
+                "bsonType": "date"
+            },
+            "sessions": {
+                "bsonType": "array",
+                "items": {
+                    "bsonType": "object",
+                    "required": [
+                        "sessionId",
+                        "sessionTitle",
+                        "unitName"
+                    ],
+                    "properties": {
+                        "sessionId" : {
+                            "bsonType": "objectId"
+                        },
+                        "sessionTitle" : {
+                            "bsonType": "string"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

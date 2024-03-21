@@ -1,0 +1,66 @@
+{
+    "$jsonSchema": {
+        "title": "Rotation",
+        "description": "A Rotation at a summer camp Session.",
+        "bsonType": "object",
+        "required": [
+            "_id",
+            "sessionId",
+            "title",
+            "startTime",
+            "endTime",
+            "schedule"
+        ],
+        "properties": {
+            "_id": {
+                "bsonType": "objectId"
+            },
+            "sessionId": {
+                "bsonType": "objectId"
+            },
+            "title": {
+                "bsonType": "string"
+            },
+            "startTime": {
+                "bsonType": "date"
+            },
+            "endTime": {
+                "bsonType": "date"
+            },
+            "schedule": {
+                "bsonType": "array",
+                "items": {
+                    "bsonType": "object",
+                    "required": [
+                        "unitId",
+                        "unitName",
+                        "staffId",
+                        "staffCampName",
+                        "activityId",
+                        "activityName"
+                    ],
+                    "properties": {
+                        "unitId": {
+                            "bsonType": "objectId"
+                        },
+                        "unitName": {
+                            "bsonType": "string"
+                        },
+                        "staffId": {
+                            "bsonType": "objectId"
+                        },
+                        "staffCampName": {
+                            "bsonType": "string"
+                        },
+                        "activityId": {
+                            "bsonType": "objectId"
+                        },
+                        "activityName": {
+                            "bsonType": "string"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

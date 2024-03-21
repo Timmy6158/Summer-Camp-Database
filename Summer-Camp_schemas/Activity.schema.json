@@ -1,0 +1,19 @@
+{
+    "$jsonSchema": {
+        "title": "Activity",
+        "description": "An Activity at a summer camp.",
+        "bsonType": "object",
+        "required": [
+            "_id",
+            "name"
+        ],
+        "properties": {
+            "_id": {
+                "bsonType": "objectId"
+            },
+            "name": {
+                "bsonType": "string"
+            }
+        }
+    }
+}

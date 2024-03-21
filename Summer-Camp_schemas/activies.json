@@ -1,0 +1,15 @@
+[
+    {
+      "_id": {"$oid": "656fb2e7ebd447b48d6c26e9"},
+      "name": "Archery"
+    },
+    {
+      "_id": {"$oid": "656fb342ebd447b48d6c26ea"},
+      "name": "Swimming"
+    },
+    {
+      "_id": {"$oid": "656fb363ebd447b48d6c26eb"},
+      "name": "Movie"
+    }
+]
+  

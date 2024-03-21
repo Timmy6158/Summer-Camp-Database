@@ -1,0 +1,109 @@
+{
+    "_id": {"$oid": "656fea40ebd447b48d6c2705"},
+    "startDate": {"$date": "2023-12-01T00:00:00.000Z"},
+    "endDate": {"$date": "2023-12-05T00:00:00.000Z"},
+    "title": "Harry Potter Week",
+    "cost": {"$numberDecimal": "100.00"},
+    "capacity": 20,
+    "staff": [
+      {
+        "_id": {"$oid": "657013b0ebd447b48d6c2709"},
+        "employeeId": {"$oid": "65701475ebd447b48d6c270a"},
+        "campName": "Minerva",
+        "roles": ["Director"]
+      },
+      {
+        "_id": {"$oid": "65701486ebd447b48d6c270b"},
+        "employeeId": {"$oid": "65701491ebd447b48d6c270c"},
+        "campName": "Hermes",
+        "roles": ["Counselor", "Lifeguard"]
+      },
+      {
+        "_id": {"$oid": "6570149debd447b48d6c270d"},
+        "employeeId": {"$oid": "657014b8ebd447b48d6c270e"},
+        "campName": "Hera",
+        "roles": ["Counselor"]
+      },
+      {
+        "_id": {"$oid": "657014c8ebd447b48d6c270f"},
+        "employeeId": {"$oid": "657014d6ebd447b48d6c2710"},
+        "campName": "Athena",
+        "roles": ["Counselor", "Lifeguard"]
+      }
+    ],
+    "units": [
+      {
+        "_id": {"$oid": "657014e6ebd447b48d6c2711"},
+        "unitName": "RavenClaw",
+        "staffId": {"$oid": "6570149debd447b48d6c270d"},
+        "staffCampName": "Hera",
+        "campers": [
+          {
+            "camperId": {"$oid": "656fbed2ebd447b48d6c26ef"},
+            "camperName": "Ada"
+          },
+          {
+            "camperId": {"$oid": "656fbf4aebd447b48d6c26f0"},
+            "camperName": "Sofia"
+          }
+        ]
+      },
+      {
+        "_id": {"$oid": "657015ceebd447b48d6c2713"},
+        "unitName": "HufflePuff",
+        "staffId": {"$oid": "65701486ebd447b48d6c270b"},
+        "staffCampName": "Hermes",
+        "campers": [
+          {
+            "camperId": {"$oid": "656fbf96ebd447b48d6c26f1"},
+            "camperName": "Iggy"
+          },
+          {
+            "camperId": {"$oid": "656fbfd1ebd447b48d6c26f2"},
+            "camperName": "Rosie"
+          }
+        ]
+      }
+    ],
+    "campers": [
+      {
+        "camperId": {"$oid": "656fbed2ebd447b48d6c26ef"},
+        "camperName": "Ada"
+      },
+      {
+        "camperId": {"$oid": "656fbf4aebd447b48d6c26f0"},
+        "camperName": "Sofia"
+      },
+      {
+        "camperId": {"$oid": "656fbf96ebd447b48d6c26f1"},
+        "camperName": "Iggy"
+      },
+      {
+        "camperId": {"$oid": "656fbfd1ebd447b48d6c26f2"},
+        "camperName": "Rosie"
+      }
+    ],
+    "rotations": [
+      {
+        "rotationId": {"$oid": "65701644ebd447b48d6c2714"},
+        "title": "Monday Morning"
+      },
+      {
+        "rotationId": {"$oid": "6570164eebd447b48d6c2715"},
+        "title": "Monday Afternoon"
+      },
+      {
+        "rotationId": {"$oid": "65701659ebd447b48d6c2716"},
+        "title": "Tuesday Morning"
+      },
+      {
+        "rotationId": {"$oid": "65701668ebd447b48d6c2717"},
+        "title": "Wednesday Morning"
+      },
+      {
+        "rotationId": {"$oid": "65701685ebd447b48d6c2718"},
+        "title": "Wednesday Evening"
+      }
+    ]
+  }
+  
